@@ -1,6 +1,6 @@
-# Histogram
+# Visualizations
 
-Displays and configures React/D3 histograms
+Displays and configures React/D3 visualizations
 
 #Instructions
 
@@ -15,13 +15,13 @@ cd documents/GitHub
 Download the files from GitHub. (you can copy the url from above the files)
 
 `
-git clone https://github.com/MichaelWingate/LinePlot.git
+git clone https://github.com/MichaelWingate/VisualizationHub.git
 `
 
 Move into the created folder:
 
 `
-cd LinePlot
+cd VisualizationHub
 `
 
 Install dependencies:
@@ -43,7 +43,7 @@ Then you can access the app from [http://localhost:3000](http://localhost:3000) 
 When you want to update your code with the changes I have pushed onto this repository, simply run this command:
 
 `
-git pull https://github.com/MichaelWingate/LinePlot.git
+git pull https://github.com/MichaelWingate/VisualizationHub.git
 `
 
 #Configuring
