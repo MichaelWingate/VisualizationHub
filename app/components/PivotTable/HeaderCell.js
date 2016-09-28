@@ -36,7 +36,7 @@ var HeaderCell = React.createClass({
 
   // Takes the provided filter categories and puts them into an object with
   // true/false values for filtering. Also adds the "Select All" option.
-  componentWillMount: function() {
+  /*componentWillMount: function() {
     var filterArray = {all: true};
     this.props.filterCategories.map(function(category,i) {
       filterArray[category] = true;
@@ -112,12 +112,13 @@ var HeaderCell = React.createClass({
     if (!e) var e = window.event;
     e.cancelBubble = true;
     if (e.stopPropagation) e.stopPropagation();
-  },
+  },*/
 
   render: function() {
     var props = this.props;
 
     // Sets the proper icon for sorting
+    /*
     if(this.props.isSorting) {
       if(this.props.primarySort) {
         if(this.props.direction == "ascending") {
@@ -141,7 +142,7 @@ var HeaderCell = React.createClass({
     var filters = [];
     filters.push(<div key={0}><input type="checkbox" name={"(Select All)"} value={"all"} checked={this.state.filterOptions["all"]} onChange={this.filterData}/>(Select All) <br/></div>);
     props.filterCategories.map(function(category,i) {
-      filters.push(<div key={i+1}><input type="checkbox" name={props.data} value={category} checked={this.state.filterOptions[category]} onChange={this.filterData}/>{category} <br/></div>);
+      filters.push(<div key={i+1}><input type="checkbox" name={props.data} value={category} checked={this.state.filterOptions[category]} onChange={this.filterData}/>{category} <br/></div>)
     },this);
 
     // Sets the cursor depending on hover
@@ -150,13 +151,17 @@ var HeaderCell = React.createClass({
     }
     else{
       var cursorStyle={cursor: 'auto', height: '100%'};
-    }
+    }*/
+
+    /*
+    <div style={cursorStyle} onMouseOver={this.hover} onClick={this.sort}><h1 style={{margin: '0px', position: 'absolute', top: '50%', transform: 'translate(0,-50%)', left: 5}}>{props.data}{this.props.isSorting ? <i className={icon} style={{float: 'left'}} aria-hidden="true" /> : null}</h1>
+    <i  style={{position: 'absolute', top: '50%', transform: 'translate(0,-50%)', right: 5}} className="fa fa-filter fa-2x" aria-hidden="true" onClick={this.filterToggle}></i></div>
+  {this.state.displayFilter ? <div style={{position: 'absolute',zIndex: 2, top: props.height*3/4, right: props.width/6, border: '1px solid black', backgroundColor: 'gray'}} onClick={this.stopPropagation}>{filters}</div> : null}
+  <div className="drag" style={{position: 'absolute', right: -2.5, bottom: 0, width: '5px', height: props.height, cursor: 'w-resize'}} onMouseDown={this.startDrag} />
+  */
     return(
       <div style={{width: props.width, height: props.height, position: 'relative', float: 'left', borderRight: '1px solid black', backgroundImage: 'linear-gradient(#fff,#efefef)', paddingLeft: 5}} >
-        <div style={cursorStyle} onMouseOver={this.hover} onClick={this.sort}><h1 style={{margin: '0px', position: 'absolute', top: '50%', transform: 'translate(0,-50%)', left: 5}}>{props.data}{this.props.isSorting ? <i className={icon} style={{float: 'left'}} aria-hidden="true" /> : null}</h1>
-          <i  style={{position: 'absolute', top: '50%', transform: 'translate(0,-50%)', right: 5}} className="fa fa-filter fa-2x" aria-hidden="true" onClick={this.filterToggle}></i></div>
-        {this.state.displayFilter ? <div style={{position: 'absolute',zIndex: 2, top: props.height*3/4, right: props.width/6, border: '1px solid black', backgroundColor: 'gray'}} onClick={this.stopPropagation}>{filters}</div> : null}
-        <div className="drag" style={{position: 'absolute', right: -2.5, bottom: 0, width: '5px', height: props.height, cursor: 'w-resize'}} onMouseDown={this.startDrag} />
+        <h2 style={{margin: '0px', position: 'absolute', top: '50%', transform: 'translate(0,-50%)', left: 5}}>{props.data}</h2>
       </div>
     )
   }

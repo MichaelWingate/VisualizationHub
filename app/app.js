@@ -6,6 +6,7 @@ var DataTable = require('./components/DataTable/DataTable');
 var Histogram = require('./components/Histogram/Histogram');
 var LinePlot = require('./components/LinePlot/LinePlot');
 var PieChart = require('./components/PieChart/PieChart');
+var PivotTable = require('./components/PivotTable/PivotTable');
 
 var VisualizationHubApp = React.createClass({
   getInitialState: function() {
@@ -144,6 +145,7 @@ var VisualizationHubApp = React.createClass({
       },this)
     }
     else {newData = this.state.data}
+
     return(
       <div>
       <div>
@@ -179,13 +181,14 @@ var VisualizationHubApp = React.createClass({
             </form>
           </div>
       </div>
-      <div>
-        {newData != [] ? <DataTable selectPoint={this.selectPoint} height={600} width={950} data={newData} colNames={cols} colRefs={refs} cellStyle={this.state.dStyle}/> : null}
-        {this.state.data != [] ?<PieChart height={600} width={600} data={this.state.data}
-          category="Weather" innerScale={.5} padAngle={.015} cornerRadius={7} displaySelected={this.displaySelected} idRef={"ID"} /> : null}
+        <div>
+          {newData != [] ? <DataTable selectPoint={this.selectPoint} height={600} width={950} data={newData} colNames={cols} colRefs={refs} cellStyle={this.state.dStyle}/> : null}
+          {this.state.data != [] ?<PivotTable height={1600} width={1400} data={this.state.data} initialMeasurementRef={"Temp"} measurementOptions={["Temp","WeatherScore"]}
+            initialMeasurementType={"Sum"} initialRowField={"Date"} initialColField={"Weather"} fieldOptions={["Date", "Location", "Weather"]}/> : null}
+            {this.state.data != [] ?<PieChart height={600} width={600} data={this.state.data}
+              category="Weather" innerScale={.5} padAngle={.015} cornerRadius={7} displaySelected={this.displaySelected} idRef={"ID"} /> : null}
+        </div>
       </div>
-      </div>
-
     )
   }
 });
